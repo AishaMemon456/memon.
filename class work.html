@@ -1,7 +1,8 @@
 
+<!DOCTYPE html>
 <html>
   <head>
-    <title>First Class Html</title>
+    <title> class work is not done Html</title>
     <link rel="icon" type="image/png" href="simple-twitter-16x16-icon-png-7.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,27 +17,26 @@
       </div>
       <div id="mainBox" style="display: flex; width: 100%; gap:10px">
         <div class="grid-item slideDown" style="width: 30%;">
-            <form  id="taskForm" onsubmit="event.preventDefault()" style="display: flex; flex-direction:column; gap: 4px; ">
+            <form id="taskForm" onsubmit="event.preventDefault();" style="display: flex; flex-direction:column; gap: 4px; ">
               <label>Task Detail</label>
-              <input type="text" name="task" required="true" id="taskField" />
+              <input type="text" name="task" required id="taskField" />
               <span style="color:red;" hidden id="taskErrorField">This field is required</span>
-              <button type="button" id="submitBtn" onclick="saveTask()" class="submitBtn" style="background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;">Submit</button>
+              <button type="button" onclick="saveTask()" class="submitBtn" style="background-color: blue; color: white; padding: 10px; border: none; border-radius: 5px;">Save</button>
             </form>
         </div>
-        <div id="boxList" style="width: 80%; display: flex; flex-direction:column; gap: 4px;" class="grid-item slideDown">
+        <div id="boxList"  style="width: 80%; display: flex; flex-direction: column; gap: 4px;" class="grid-item slideDown">
+          
         </div>
     </div>
   </body>
   <script>
-    // syntax
+    // syntax rule
     // camelCase - taskField
     // snake_case - task_field
     // kebab-case - task-field
     // pascal-case - TaskField
     var tasks = [];
     var editTaskId = null;
-    var currentTaskId = null;
-
 
     var taskErrorField = document.getElementById('taskErrorField');
 
@@ -44,44 +44,16 @@
       debugger;
       var taskVal = document.getElementById('taskField');
 
-      if(taskVal.validity.valueMissing) {
+      if(taskVal.validity.valueMissing){
         taskErrorField.hidden = false
         return false
       }
       taskErrorField.hidden = true
-      if(editTaskId != null) {
-        tasks[editTaskId] = taskVal.value;
-      currentTaskId = editTaskId 
-      var renderListElement = '';
-      tasks.forEach((x, index) => {
-          debugger;
-          renderListElement += `<div class="box" style="background-color: aqua;">
+      tasks.push(taskVal.value);
+      currentTaskId = tasks.length - 1
+
+      let listHtml = `<div class="box" style="background-color: aqua;">
             <div style="padding-left:10px; border-radius: 50%; padding-right: 10px; display:flex; justify-content: space-between; align-items: center;">
-              <p>`+ x +`</p>
-              <div >
-                <button onclick="editTask(`+index+`)">
-                  Edit
-                </button>
-                <button onclick="deleteTask(`+ index +`)">
-                  X
-                </button>
-              </div>
-            </div>
-          </div>`
-      })
-      var boxElement = document.getElementById('boxList');
-
-      boxElement.innerHTML = renderListElement;
-      var btnElement = document.getElementById('submitBtn');
-      editTaskId = null;
-      btnElement.innerHTML = "save";
-    } else{
-    
-    tasks.push(taskVal.value);
-      currenttaskId = tasks.length - 1
-
-      let listHtml =`<div class= "box" style="background-color: aqua">
-        <div style="padding-left:10px; border-radius: 50%; padding-right: 10px; display:flex; justify-content: space-between; align-items: center;">
               <p>`+ taskVal.value +`</p>
               <div >
                 <button onclick="editTask(`+currentTaskId+`)">
@@ -91,11 +63,13 @@
                   X
                 </button>
               </div>
-            </div>`;
-            var boxElement = document.getElementById('boxList');
+            </div>
+          </div>`;
+
+      var boxElement = document.getElementById('boxList');
 
       boxElement.innerHTML += listHtml;
-          }
+      
 
       taskVal.value = "";
     }
@@ -106,13 +80,11 @@
       editTaskId = id;
       var taskVal = document.getElementById('taskField');
       taskVal.value = tasks[id];
-      var btnElement = document.getElementById('submitBtn');
-      btnElement.innerHTML = "update";
     }
 
     function deleteTask(id) {
       debugger;
-      tasks.splice(id ,1);
+      tasks.splice(id,1);
       var renderListElement = '';
       tasks.forEach((x, index) => {
           debugger;
@@ -138,9 +110,9 @@
 
   </script>
 </html>
-      
-    
+Clear Save
+© 2011-2024 AirForShare.com
+Made in BirdsCorp.com with ❤️
+ 
 
 
-  
-       
